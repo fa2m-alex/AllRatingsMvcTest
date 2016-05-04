@@ -1,0 +1,60 @@
+body {
+  background-color: #ccccff;
+
+}
+
+.navbar-header {
+  height: 150px;
+  float: left;
+  width: 100%;
+}
+
+.navbar-brand {
+  text-align: center;
+}
+
+#logo-img {
+  width: 120px;
+  height: 120px;
+}
+
+.navbar-header .navbar-form {
+  float: none;
+  text-align: center;
+}
+
+
+.navbar-form input.search-form {
+  width: 500px;
+}
+
+#about-link {
+  float: right;
+}
+
+#main-content {
+  width: 800px;
+}
+
+.panel {
+  background-color: #f8f8f8;
+}
+
+.panel-image {
+  float: left;
+  width: 100px;
+}
+
+.panel-text {
+  margin-left: 15px;
+  float: left;
+}
+
+.label-metacritic-good {
+  background-color: #00cc00;
+}
+
+.rating-img {
+  width: 20px;
+  height: 20px;
+}
