@@ -31,8 +31,8 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -65,6 +65,47 @@
     </nav>
 </header>
 
+
+<div id="main-content" class="container">
+
+    <c:forEach items="${results}" var="result">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="panel-image" src="${result.poster}">
+                <div class="panel-text">
+                    <h4>${result.title} (${result.year})</h4>
+                    <div class="ratings">
+                        <h3>
+                            <c:if test="${result.metascore > 60}">
+                                <span class="label label-metacritic-good">Metascore: ${result.metascore}</span>
+                            </c:if>
+
+                            <c:if test="${result.metascore < 40}">
+                                <span class="label label-metacritic-bad">Metascore: ${result.metascore}</span>
+                            </c:if>
+
+                            <c:if test="${result.metascore < 61 && result.metascore > 40}">
+                                <span class="label label-metacritic-medium">Metascore: ${result.metascore}</span>
+                            </c:if>
+
+                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
+                            <span class="label label-default">Tomatoes: 56%</span>
+
+              <span class="imdbRatingPlugin" data-user="ur51759955" data-title="${result.imdbID}" data-style="p1">
+                <a href="http://www.imdb.com/title/${result.imdbID}/?ref_=plg_rt_1" target="_blank">
+                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" />
+                </a>
+              </span>
+                            <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');
+                            </script></h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+
+</div>
 
 
 

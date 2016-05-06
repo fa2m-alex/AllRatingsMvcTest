@@ -54,6 +54,15 @@ body {
   background-color: #00cc00;
 }
 
+.label-metacritic-bad {
+  background-color: #ff1a1a;
+}
+
+.label-metacritic-medium {
+  background-color: #ffdb4d;
+  color: #0f0f0f;
+}
+
 .rating-img {
   width: 20px;
   height: 20px;
