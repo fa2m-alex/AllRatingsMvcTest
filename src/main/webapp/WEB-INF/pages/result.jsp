@@ -75,7 +75,7 @@
                 <div class="panel-text">
                     <h4>${result.title} (${result.year})</h4>
                     <div class="ratings">
-                        <h3>
+                        <h4>
                             <c:if test="${result.metascore > 60}">
                                 <span class="label label-metacritic-good">Metascore: ${result.metascore}</span>
                             </c:if>
@@ -84,20 +84,27 @@
                                 <span class="label label-metacritic-bad">Metascore: ${result.metascore}</span>
                             </c:if>
 
-                            <c:if test="${result.metascore < 61 && result.metascore > 40}">
+                            <c:if test="${result.metascore < 61 && result.metascore > 39}">
                                 <span class="label label-metacritic-medium">Metascore: ${result.metascore}</span>
                             </c:if>
 
-                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
-                            <span class="label label-default">Tomatoes: 56%</span>
 
-              <span class="imdbRatingPlugin" data-user="ur51759955" data-title="${result.imdbID}" data-style="p1">
+                            <c:if test="${result.tomatoes >= 60}">
+                                <img class="rating-img" src="<c:url value="/resources/img/rating-img/tomato.png"/>">
+                            </c:if>
+                            <c:if test="${result.tomatoes < 60}">
+                                <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
+                            </c:if>
+
+                            <span>${result.tomatoes}%</span>
+
+              <span class="imdbRatingPlugin" data-user="ur51759955" data-title="${result.imdbID}" data-style="p3">
                 <a href="http://www.imdb.com/title/${result.imdbID}/?ref_=plg_rt_1" target="_blank">
-                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" />
+                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_37x18.png" />
                 </a>
               </span>
                             <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');
-                            </script></h3>
+                            </script></h4>
 
                     </div>
                 </div>
