@@ -18,10 +18,10 @@ public class HelloController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
-		return "index";
+		return "result";
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/results", method = RequestMethod.POST)
 	public String someMethod(@ModelAttribute("query") String query, ModelMap model) {
 
 		OMDbService omDbService = new OMDbService();
