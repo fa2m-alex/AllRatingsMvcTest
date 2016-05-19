@@ -49,35 +49,47 @@
                     <a href="/movies/${result.imdbID}"><h4>${result.title} (${result.year})</h4></a>
                     <div class="ratings">
                         <h4>
-                            <c:if test="${result.metascore > 60}">
-                                <span class="label label-metacritic-good">Metascore: ${result.metascore}</span>
-                            </c:if>
+                            <a href="http://www.imdb.com/title/${result.imdbID}/criticreviews?ref_=tt_ov_rt" target="_blank">
+                                <c:if test="${result.metascore == 0}">
+                                    <span class="label label-default">Metascore: N/A</span>
+                                </c:if>
+                                
+                                <c:if test="${result.metascore > 60}">
+                                    <span class="label label-metacritic-good">Metascore: ${result.metascore}</span>
+                                </c:if>
 
-                            <c:if test="${result.metascore < 40}">
-                                <span class="label label-metacritic-bad">Metascore: ${result.metascore}</span>
-                            </c:if>
+                                <c:if test="${result.metascore < 40 && result.metascore > 0}">
+                                    <span class="label label-metacritic-bad">Metascore: ${result.metascore}</span>
+                                </c:if>
 
-                            <c:if test="${result.metascore < 61 && result.metascore > 39}">
-                                <span class="label label-metacritic-medium">Metascore: ${result.metascore}</span>
-                            </c:if>
+                                <c:if test="${result.metascore < 61 && result.metascore > 39}">
+                                    <span class="label label-metacritic-medium">Metascore: ${result.metascore}</span>
+                                </c:if>
+                            </a>
 
+
+
+                            <c:if test="${result.tomatoes == 0}">
+                                <span class="label label-default">Tomatoes: N/A</span>
+                            </c:if>
 
                             <c:if test="${result.tomatoes >= 60}">
                                 <img class="rating-img" src="<c:url value="/resources/img/rating-img/tomato.png"/>">
+                                <span>Tomatoes: ${result.tomatoes}%</span>
                             </c:if>
-                            <c:if test="${result.tomatoes < 60}">
+                            <c:if test="${result.tomatoes < 60 && result.tomatoes > 0}">
                                 <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
+                                <span>Tomatoes: ${result.tomatoes}%</span>
                             </c:if>
 
-                            <span>${result.tomatoes}%</span>
 
-              <span class="imdbRatingPlugin" data-user="ur51759955" data-title="${result.imdbID}" data-style="p3">
-                <a href="http://www.imdb.com/title/${result.imdbID}/?ref_=plg_rt_1" target="_blank">
-                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_37x18.png" />
-                </a>
-              </span>
-                            <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');
-                            </script></h4>
+
+                            <a href="http://www.imdb.com/title/${result.imdbID}" target="_blank">
+                                <img src="<c:url value="/resources/img/rating-img/imdb.png"/>">
+                            </a>
+                            <span>${result.imdbRating}</span>
+
+                        </h4>
 
                     </div>
                 </div>

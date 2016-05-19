@@ -81,8 +81,10 @@ body {
 }
 
 .img-text-text {
-  margin-top: 5px;
+  margin-top: 10px;
 }
+
+
 
 .label-metacritic-good {
   background-color: #00cc00;
@@ -95,4 +97,16 @@ body {
 .label-metacritic-medium {
   background-color: #ffdb4d;
   color: #0f0f0f;
+}
+
+a:link {
+  text-decoration:none;
+}
+
+a:visited {
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:none;
 }

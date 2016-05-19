@@ -46,59 +46,77 @@
         <div class="panel-body">
             <div class="img-text">
                 <img id="movie-panel-image" src="${movie.poster}">
-                <div class="img-text-text">
+                <div class="ratings">
+                    <h4>
+                        <a href="http://www.imdb.com/title/${movie.imdbID}/criticreviews?ref_=tt_ov_rt" target="_blank">
+                            <c:if test="${movie.metascore == 0}">
+                                <span class="label label-default">Metascore: N/A</span>
+                            </c:if>
+
+                            <c:if test="${movie.metascore > 60}">
+                                <span class="label label-metacritic-good">Metascore: ${movie.metascore}</span>
+                            </c:if>
+
+                            <c:if test="${movie.metascore < 40 && movie.metascore > 0}">
+                                <span class="label label-metacritic-bad">Metascore: ${movie.metascore}</span>
+                            </c:if>
+
+                            <c:if test="${movie.metascore < 61 && movie.metascore > 39}">
+                                <span class="label label-metacritic-medium">Metascore: ${movie.metascore}</span>
+                            </c:if>
+                        </a>
+
+                        <br><br>
+
+                        <c:if test="${movie.tomatoes == 0}">
+                            <span class="label label-default">Tomatoes: N/A</span>
+                        </c:if>
+
+                        <c:if test="${movie.tomatoes >= 60}">
+                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/tomato.png"/>">
+                            <span>Tomatoes: ${movie.tomatoes}%</span>
+                        </c:if>
+                        <c:if test="${movie.tomatoes < 60 && movie.tomatoes > 0}">
+                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
+                            <span>Tomatoes: ${movie.tomatoes}%</span>
+                        </c:if>
+
+                        <br><br>
+
+                        <a href="http://www.imdb.com/title/${movie.imdbID}" target="_blank">
+                            <img src="<c:url value="/resources/img/rating-img/imdb.png"/>">
+                        </a>
+                        <span>${movie.imdbRating}</span>
+
+                    </h4>
+
+                </div>
+                <!--div class="img-text-tl v">
                     <p>${movie.released}</p>
                     <p>${movie.age}</p>
                     <p>${movie.country}</p>
                     <p>${movie.runtime}</p>
                     <p>${movie.genre}</p>
-                </div>
+                </div-->
             </div>
 
             <div class="panel-text">
 
-                <div class="ratings">
-                    <h4>
-                        <c:if test="${movie.metascore > 60}">
-                            <span class="label label-metacritic-good">Metascore: ${movie.metascore}</span>
-                        </c:if>
 
-                        <c:if test="${movie.metascore < 40}">
-                            <span class="label label-metacritic-bad">Metascore: ${movie.metascore}</span>
-                        </c:if>
-
-                        <c:if test="${movie.metascore < 61 && movie.metascore > 39}">
-                            <span class="label label-metacritic-medium">Metascore: ${result.metascore}</span>
-                        </c:if>
-
-
-                        <c:if test="${movie.tomatoes >= 60}">
-                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/tomato.png"/>">
-                        </c:if>
-                        <c:if test="${movie.tomatoes < 60}">
-                            <img class="rating-img" src="<c:url value="/resources/img/rating-img/rotten.png"/>">
-                        </c:if>
-
-                        <span>${movie.tomatoes}%</span>
-
-              <span class="imdbRatingPlugin" data-user="ur51759955" data-title="${movie.imdbID}" data-style="p3">
-                <a href="http://www.imdb.com/title/${movie.imdbID}/?ref_=plg_rt_1" target="_blank">
-                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_37x18.png" />
-                </a>
-              </span>
-                        <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";stags.parentNode.insertBefore(js,stags);})(document,'script','imdb-rating-api');
-                        </script></h4>
-
-                </div>
-
-                <h4>Plot</h4>
+                <h4><b>Plot</b></h4>
 
                 <div class="plot-text">
                     <content>${movie.plot}</content>
                 </div>
 
-                <h4>Directed by:</h4><p>${movie.director}</p>
-                <h4>Cast:</h4><p>${movie.cast}</p>
+                <h4><b>Directed by:</b></h4><p>${movie.director}</p>
+                <h4><b>Cast:</b></h4><p>${movie.cast}</p>
+
+                <h4><b>Released:</b></h4><p>${movie.released}</p>
+                <h4><b>MPAA Rating:</b></h4><p>${movie.age}</p>
+                <h4><b>Country:</b></h4><p>${movie.country}</p>
+                <h4><b>Runtime:</b></h4><p>${movie.runtime}</p>
+                <h4><b>Genre:</b></h4><p>${movie.genre}</p>
 
             </div>
         </div>

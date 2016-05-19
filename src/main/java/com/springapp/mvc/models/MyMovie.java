@@ -16,6 +16,7 @@ public class MyMovie {
     private int metascore;
     private String poster;
     private int tomatoes;
+    private String imdbRating;
 
     private String plot;
     private String director;
@@ -41,6 +42,7 @@ public class MyMovie {
         this.title = movie.getTitle();
         this.year = movie.getYear();
         this.poster = movie.getPoster();
+        this.imdbRating = movie.getImdbRating();
 
         this.plot = movie.getPlot();
         this.director = movie.getDirector();
@@ -113,5 +115,9 @@ public class MyMovie {
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getImdbRating() {
+        return imdbRating;
     }
 }
