@@ -5,21 +5,20 @@ body {
 
 .navbar-header {
   height: 150px;
-  float: left;
+  //float: left;
   width: 100%;
 }
 
-.navbar-brand {
+/*.navbar-brand {
   text-align: center;
-}
+}*/
 
 #logo-img {
   width: 120px;
   height: 120px;
 }
 
-.navbar-header .navbar-form {
-  float: none;
+.navbar-form {
   text-align: center;
 }
 
@@ -110,3 +109,7 @@ a:visited {
 a:hover {
   text-decoration:none;
 }
+
+
+
+

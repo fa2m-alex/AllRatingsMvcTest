@@ -18,11 +18,14 @@
     <spring:url value="/resources/js/jquery-2.2.3.min.js" var="jqueryJs" />
     <spring:url value="/resources/js/bootstrap.min.js" var="bootstrapJs" />
 
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>All Ratings - Metascore, Tomatoes, IMDb - All in one place</title>
+    <link rel="shortcut icon" href="/resources/img/logo.png" type="image/png">
 
     <!-- Bootstrap -->
     <link href="${bootstrapCss}" rel="stylesheet">
@@ -91,6 +94,11 @@
                     </h4>
 
                 </div>
+
+                <a href="${rarbg}${searchQuery}" target="_blank">Rarbg</a>
+                <a href="${toloka}${searchQuery}" target="_blank">Toloka</a>
+                <a href="${rutracker}${searchQuery}" target="_blank">Rutracker</a>
+
                 <!--div class="img-text-tl v">
                     <p>${movie.released}</p>
                     <p>${movie.age}</p>

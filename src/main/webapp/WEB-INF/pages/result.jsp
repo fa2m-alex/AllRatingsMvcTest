@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>All Ratings - Metascore, Tomatoes, IMDb - All in one place</title>
+    <link rel="shortcut icon" href="/resources/img/logo.png" type="image/png">
 
     <!-- Bootstrap -->
     <link href="${bootstrapCss}" rel="stylesheet">

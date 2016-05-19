@@ -1,8 +1,10 @@
 package com.springapp.mvc;
 
+import com.springapp.mvc.models.Constants;
 import com.springapp.mvc.models.MyMovie;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.service.OMDbService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,9 +15,10 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("/")
 public class HelloController {
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "Hello world!");
+		//model.addAttribute("message", "Hello world!");
 		return "result";
 	}
 
@@ -45,7 +48,20 @@ public class HelloController {
 
 		MyMovie movie = new MyMovie(imdbID);
 
+		String[] queryArr = movie.getTitle().toLowerCase().split(" ");
+
+		String query = "";
+		for (String str:queryArr) {
+			query = query + "+" + str;
+		}
+
+		query = query + "+" + movie.getYear();
+
 		model.addAttribute("movie", movie);
+		model.addAttribute("rarbg", Constants.rarbg);
+		model.addAttribute("toloka", Constants.toloka);
+		model.addAttribute("rutracker", Constants.rutracker);
+		model.addAttribute("searchQuery", query);
 
 		return "movie";
 	}
