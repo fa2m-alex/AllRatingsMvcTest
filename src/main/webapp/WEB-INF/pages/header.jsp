@@ -18,7 +18,7 @@
                     <a href="#">About</a>
                 </div-->
 
-                <form class="navbar-form" role="search" method="post" action="results">
+                <form class="navbar-form" role="search" method="post" action="/results">
                     <a href="/"><img id="logo-img" alt="Brand" src="<c:url value="/resources/img/logo.png"></c:url>"></a>
                     <div class="form-group">
                         <input type="text" class="form-control search-form" name="query" placeholder="Search">

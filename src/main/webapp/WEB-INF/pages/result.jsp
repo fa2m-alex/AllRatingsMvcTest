@@ -44,9 +44,9 @@
     <c:forEach items="${results}" var="result">
         <div class="panel panel-default">
             <div class="panel-body">
-                <img class="panel-image" src="${result.poster}">
+                <a href="/movies/${result.imdbID}"><img class="panel-image" src="${result.poster}"></a>
                 <div class="panel-text">
-                    <h4>${result.title} (${result.year})</h4>
+                    <a href="/movies/${result.imdbID}"><h4>${result.title} (${result.year})</h4></a>
                     <div class="ratings">
                         <h4>
                             <c:if test="${result.metascore > 60}">

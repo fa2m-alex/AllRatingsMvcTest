@@ -36,7 +36,7 @@ body {
   width: 800px;
 }
 
-.panel {
+.panel .panel-body {
   background-color: #f8f8f8;
 }
 
@@ -54,6 +54,40 @@ body {
   background-color: #00cc00;
 }
 
+.rating-img {
+  width: 20px;
+  height: 20px;
+}
+
+.panel .img-text {
+  float: left;
+  width: 200px;
+}
+
+#movie-panel-image {
+  width: 200px;
+}
+
+.panel .panel-heading {
+  background-color: #e6e6e6;
+}
+
+.panel-heading h3 {
+  text-align: center;
+}
+
+.panel .panel-text {
+  width: 500px;
+}
+
+.img-text-text {
+  margin-top: 5px;
+}
+
+.label-metacritic-good {
+  background-color: #00cc00;
+}
+
 .label-metacritic-bad {
   background-color: #ff1a1a;
 }
@@ -61,9 +95,4 @@ body {
 .label-metacritic-medium {
   background-color: #ffdb4d;
   color: #0f0f0f;
-}
-
-.rating-img {
-  width: 20px;
-  height: 20px;
 }

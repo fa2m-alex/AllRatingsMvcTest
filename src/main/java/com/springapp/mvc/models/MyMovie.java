@@ -17,22 +17,41 @@ public class MyMovie {
     private String poster;
     private int tomatoes;
 
-    public MyMovie(SearchResult searchResult){
-        this.title = searchResult.getTitle();
-        this.year = searchResult.getYear();
-        this.imdbID = searchResult.getImdbID();
-        this.poster = searchResult.getPoster();
+    private String plot;
+    private String director;
+    private String cast;
+    private String released;
+    private String age;
+    private String country;
+    private String runtime;
+    private String genre;
+
+    public MyMovie(String imdbID){
+
+        this.imdbID = imdbID;
 
         OMDbService service = new OMDbService();
-        Movie movie = service.getContentByID(searchResult.getImdbID()).getMovie();
+        Movie movie = service.getContentByID(imdbID).getMovie();
 
         if (!movie.getMetascore().equals("N/A"))
             this.metascore = Integer.parseInt(movie.getMetascore());
         else
             this.metascore = 0;
 
+        this.title = movie.getTitle();
+        this.year = movie.getYear();
+        this.poster = movie.getPoster();
+
+        this.plot = movie.getPlot();
+        this.director = movie.getDirector();
+        this.cast = movie.getActors();
+        this.released = movie.getReleased();
+        this.age = movie.getRated();
+        this.country = movie.getCountry();
+        this.runtime = movie.getRuntime();
+        this.genre = movie.getGenre();
+
         OpenDbTomatoReader openDbTomatoReader = new OpenDbTomatoReader(imdbID);
-        //this.tomatoes = openDbTomatoReader.getTomatoMeter();
 
         if (!openDbTomatoReader.getTomatoMeter().equals("N/A"))
             this.tomatoes = Integer.parseInt(openDbTomatoReader.getTomatoMeter());
@@ -62,5 +81,37 @@ public class MyMovie {
 
     public int getTomatoes() {
         return tomatoes;
+    }
+
+    public String getPlot() {
+        return plot;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getCast() {
+        return cast;
+    }
+
+    public String getReleased() {
+        return released;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 }

@@ -4,11 +4,9 @@ import com.springapp.mvc.models.MyMovie;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.service.OMDbService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -31,16 +29,24 @@ public class HelloController {
 		if(results != null){
 			for (int i=0; i<results.length; i++) {
 				if(results[i].getType()!=null && results[i].getType().toString().equals("movie")) {
-					MyMovie temp = new MyMovie(results[i]);
+					MyMovie temp = new MyMovie(results[i].getImdbID());
 					movies.add(temp);
 				}
 			}
 		}
 
-
-
 		model.addAttribute("results", movies);
 
 		return "result";
+	}
+
+	@RequestMapping(value = "/movies/{imdbID}", method = RequestMethod.GET)
+	public String getMovie(@PathVariable("imdbID") String imdbID, Model model){
+
+		MyMovie movie = new MyMovie(imdbID);
+
+		model.addAttribute("movie", movie);
+
+		return "movie";
 	}
 }
