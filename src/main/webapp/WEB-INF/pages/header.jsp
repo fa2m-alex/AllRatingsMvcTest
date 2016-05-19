@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control search-form" name="query" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Search</button>
                 </form>
 
             </div>

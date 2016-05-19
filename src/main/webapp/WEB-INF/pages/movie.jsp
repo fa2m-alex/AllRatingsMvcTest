@@ -48,7 +48,14 @@
         <div class="panel-heading"><h3>${movie.title} (${movie.year})</h3></div>
         <div class="panel-body">
             <div class="img-text">
-                <img id="movie-panel-image" src="${movie.poster}">
+
+                <c:if test="${movie.poster != null}">
+                    <img id="movie-panel-image" src="${movie.poster}">
+                </c:if>
+                <c:if test="${movie.poster == null}">
+                    <img id="movie-panel-image" src="/resources/img/no-image.png">
+                </c:if>
+
                 <div class="ratings">
                     <h4>
                         <a href="http://www.imdb.com/title/${movie.imdbID}/criticreviews?ref_=tt_ov_rt" target="_blank">
@@ -95,17 +102,19 @@
 
                 </div>
 
+                <br>
+
+                <h4>Download:</h4>
                 <a href="${rarbg}${searchQuery}" target="_blank">Rarbg</a>
                 <a href="${toloka}${searchQuery}" target="_blank">Toloka</a>
+                <br>
                 <a href="${rutracker}${searchQuery}" target="_blank">Rutracker</a>
+                <a href="${kickass}${searchQuery}" target="_blank">Kickass</a>
 
-                <!--div class="img-text-tl v">
-                    <p>${movie.released}</p>
-                    <p>${movie.age}</p>
-                    <p>${movie.country}</p>
-                    <p>${movie.runtime}</p>
-                    <p>${movie.genre}</p>
-                </div-->
+                <br>
+
+                <h4>Subtitles:</h4><a href="${subscene}${searchQuery}" target="_blank">Subscene</a>
+
             </div>
 
             <div class="panel-text">
@@ -128,7 +137,7 @@
 
             </div>
         </div>
-
+    </div>
 </div>
 
 

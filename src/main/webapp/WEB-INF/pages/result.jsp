@@ -45,7 +45,14 @@
     <c:forEach items="${results}" var="result">
         <div class="panel panel-default">
             <div class="panel-body">
-                <a href="/movies/${result.imdbID}"><img class="panel-image" src="${result.poster}"></a>
+
+                <c:if test="${result.poster != null}">
+                    <a href="/movies/${result.imdbID}"><img class="panel-image" src="${result.poster}"></a>
+                </c:if>
+                <c:if test="${result.poster == null}">
+                    <a href="/movies/${result.imdbID}"><img class="panel-image" src="/resources/img/no-image.png"></a>
+                </c:if>
+
                 <div class="panel-text">
                     <a href="/movies/${result.imdbID}"><h4>${result.title} (${result.year})</h4></a>
                     <div class="ratings">

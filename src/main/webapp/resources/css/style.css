@@ -68,7 +68,8 @@ body {
 }
 
 .panel .panel-heading {
-  background-color: #e6e6e6;
+  background-color: #00004d;
+  color: white;
 }
 
 .panel-heading h3 {

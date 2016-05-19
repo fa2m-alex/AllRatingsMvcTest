@@ -48,19 +48,15 @@ public class HelloController {
 
 		MyMovie movie = new MyMovie(imdbID);
 
-		String[] queryArr = movie.getTitle().toLowerCase().split(" ");
-
-		String query = "";
-		for (String str:queryArr) {
-			query = query + "+" + str;
-		}
-
-		query = query + "+" + movie.getYear();
+		String query = movie.getTitle();
+		query = query + " " + movie.getYear();
 
 		model.addAttribute("movie", movie);
 		model.addAttribute("rarbg", Constants.rarbg);
 		model.addAttribute("toloka", Constants.toloka);
 		model.addAttribute("rutracker", Constants.rutracker);
+		model.addAttribute("kickass", Constants.kickass);
+		model.addAttribute("subscene", Constants.subscene);
 		model.addAttribute("searchQuery", query);
 
 		return "movie";
