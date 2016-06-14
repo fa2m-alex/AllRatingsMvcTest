@@ -49,10 +49,10 @@
         <div class="panel-body">
             <div class="img-text">
 
-                <c:if test="${movie.poster != null}">
+                <c:if test="${!movie.poster.equals('N/A')}">
                     <img id="movie-panel-image" src="${movie.poster}">
                 </c:if>
-                <c:if test="${movie.poster == null}">
+                <c:if test="${movie.poster.equals('N/A')}">
                     <img id="movie-panel-image" src="/resources/img/no-image.png">
                 </c:if>
 

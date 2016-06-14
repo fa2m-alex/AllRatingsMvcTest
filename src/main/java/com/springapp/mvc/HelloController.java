@@ -2,8 +2,10 @@ package com.springapp.mvc;
 
 import com.springapp.mvc.models.Constants;
 import com.springapp.mvc.models.MyMovie;
+import com.springapp.mvc.services.OpenDbApi;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.service.OMDbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,9 @@ import java.util.ArrayList;
 @RequestMapping("/")
 public class HelloController {
 
+	@Autowired
+	private OpenDbApi openDbApi;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		//model.addAttribute("message", "Hello world!");
@@ -23,22 +28,9 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/results", method = RequestMethod.POST)
-	public String someMethod(@ModelAttribute("query") String query, ModelMap model) {
+	public String searchMovies(@ModelAttribute("query") String query, ModelMap model) {
 
-		OMDbService omDbService = new OMDbService();
-		SearchResult[] results = omDbService.searchContent(query);
-		ArrayList<MyMovie> movies = new ArrayList<MyMovie>();
-
-		if(results != null){
-			for (int i=0; i<results.length; i++) {
-				if(results[i].getType()!=null && results[i].getType().toString().equals("movie")) {
-					MyMovie temp = new MyMovie(results[i].getImdbID());
-					movies.add(temp);
-				}
-			}
-		}
-
-		model.addAttribute("results", movies);
+		model.addAttribute("results", openDbApi.searchMovies(query));
 
 		return "result";
 	}
@@ -46,7 +38,7 @@ public class HelloController {
 	@RequestMapping(value = "/movies/{imdbID}", method = RequestMethod.GET)
 	public String getMovie(@PathVariable("imdbID") String imdbID, Model model){
 
-		MyMovie movie = new MyMovie(imdbID);
+		MyMovie movie = openDbApi.getMovieById(imdbID);
 
 		String query = movie.getTitle();
 		query = query + " " + movie.getYear();

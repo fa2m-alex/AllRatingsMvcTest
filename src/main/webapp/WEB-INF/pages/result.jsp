@@ -46,10 +46,10 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-                <c:if test="${result.poster != null}">
+                <c:if test="${!result.poster.equals('N/A')}">
                     <a href="/movies/${result.imdbID}"><img class="panel-image" src="${result.poster}"></a>
                 </c:if>
-                <c:if test="${result.poster == null}">
+                <c:if test="${result.poster.equals('N/A')}">
                     <a href="/movies/${result.imdbID}"><img class="panel-image" src="/resources/img/no-image.png"></a>
                 </c:if>
 
