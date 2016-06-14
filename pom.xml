@@ -94,6 +94,7 @@
                     </includes>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
